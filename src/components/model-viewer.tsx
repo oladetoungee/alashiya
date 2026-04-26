@@ -1,6 +1,6 @@
 "use client";
 
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import { Bounds, Center, OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Suspense, useRef } from "react";
 import type { Mesh } from "three";
@@ -45,7 +45,11 @@ export function ModelViewer({ model }: { model: Model3D }) {
       <directionalLight position={[-3, -2, -4]} intensity={0.4} />
       <Suspense fallback={null}>
         {model.src ? (
-          <GLTFMesh src={model.src} />
+          <Bounds fit clip observe margin={1.4}>
+            <Center>
+              <GLTFMesh src={model.src} />
+            </Center>
+          </Bounds>
         ) : (
           <PlaceholderMesh shape={model.shape} />
         )}
