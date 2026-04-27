@@ -2,10 +2,7 @@
   Single source of truth for 3D models.
   - `src` is the path to a .glb/.gltf in /public/models/. When null, a placeholder
     primitive shape is rendered, so the viewer always works during content prod.
-  - HERO_MODELS is the pool the home-page hero randomly picks from on each load.
-
-  As the team delivers more .glb files, drop them into /public/models/ and add
-  an entry below (or move one out of the in-progress list).
+  - HERO_MODELS is the pool the home-page hero cycles through.
 */
 
 export type Model3D = {
@@ -21,13 +18,31 @@ export const HERO_MODELS: Model3D[] = [
     src: "/models/aphrodite.glb",
     caption: "Aphrodite · marble sculpture",
   },
-];
-
-// In progress with the team — re-add to HERO_MODELS as each .glb arrives.
-export const IN_PROGRESS_MODELS: Model3D[] = [
-  { id: "amphora", src: null, shape: "torus", caption: "Amphora · in progress" },
-  { id: "mosaic-fragment", src: null, shape: "octahedron", caption: "Mosaic fragment · in progress" },
-  { id: "bronze-bowl", src: null, shape: "knot", caption: "Bronze vessel · in progress" },
+  {
+    id: "amphoroid-crater",
+    src: "/models/amphoroid-crater.glb",
+    caption: "Amphoroid Crater · Crypto-Geometric, 11th century BC",
+  },
+  {
+    id: "sculpture",
+    src: "/models/sculpture.glb",
+    caption: "Sculpture · awaiting attribution",
+  },
+  {
+    id: "ritual-vessel",
+    src: "/models/ritual-vessel.glb",
+    caption: "Ritual vessel · awaiting attribution",
+  },
+  {
+    id: "wall-painting",
+    src: "/models/wall-painting.glb",
+    caption: "Wall painting fragment · awaiting attribution",
+  },
+  {
+    id: "vase",
+    src: "/models/vase.glb",
+    caption: "Vase · awaiting attribution",
+  },
 ];
 
 export function pickRandomHeroModel(): Model3D {

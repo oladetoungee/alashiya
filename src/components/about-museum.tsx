@@ -11,7 +11,7 @@ export function AboutMuseum() {
             <div className="mt-2 h-px w-12 bg-flame" />
           </div>
 
-          <h2 className="font-display text-3xl font-medium leading-[1.05] tracking-[-0.02em] text-ink lg:text-5xl">
+          <h2 className="font-display text-3xl font-normal leading-[1.05] tracking-[-0.02em] text-ink lg:text-5xl">
             From 1964
             <br />
             to the Present
@@ -39,10 +39,10 @@ export function AboutMuseum() {
               key={stat.id}
               className="border-t-2 border-flame/70 bg-surface p-6 lg:p-8"
             >
-              <p className="font-display text-2xl font-medium text-ink lg:text-3xl">
+              <p className="font-display text-xl font-normal text-ink lg:text-2xl">
                 {stat.value}
               </p>
-              <p className="mt-2 type-small text-ink/55">{stat.label}</p>
+              <p className="mt-1 type-small text-ink/50">{stat.label}</p>
             </div>
           ))}
         </Reveal>

@@ -6,7 +6,7 @@ export function VisitSection() {
     <section className="px-6 pt-24 pb-6 lg:px-10 lg:pt-32 lg:pb-8">
       <Reveal className="mx-auto max-w-5xl text-center">
         <p className="type-pre-title text-flame">Plan Your Visit</p>
-        <h2 className="mt-4 font-display text-3xl font-medium leading-tight tracking-[-0.02em] text-ink lg:text-5xl">
+        <h2 className="mt-4 font-display text-3xl font-normal leading-tight tracking-[-0.02em] text-ink lg:text-5xl">
           Archaeological Museum Pafos District
         </h2>
       </Reveal>
