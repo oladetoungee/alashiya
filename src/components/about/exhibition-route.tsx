@@ -40,7 +40,7 @@ function withEmphasis(text: string) {
 
 export function ExhibitionRoute() {
   return (
-    <section className="bg-bg px-6 py-24 lg:px-20 lg:py-32">
+    <section className="bg-nav px-6 py-24 lg:px-20 lg:py-32">
       <div className="mx-auto max-w-7xl">
         <Reveal>
           <p className="type-pre-title text-flame">The Exhibition Route</p>

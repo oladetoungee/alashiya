@@ -1,6 +1,8 @@
 // Single source of truth for the Explore page copy and structured data.
 // Components read from here — no inline strings, mirroring lib/about.ts etc.
 
+import type { ImageKey } from "./images";
+
 export const EXPLORE_INTRO = {
   eyebrow: "Explore the Museum",
   heading: ["Follow the Route", "Through Time"],
@@ -48,8 +50,9 @@ export type Chapter = {
   // Phrases bolded inline within body/keyFinds, à la about/exhibition-route.
   emphasis?: string[];
   keyFinds: string[];
-  // Placeholder image slots until gallery photography lands.
-  gallery: number;
+  // Gallery photos for this chapter, keyed into the image registry.
+  // Empty for "duo" chapters (Ch1 + Ch2 are text-only two-up).
+  images: ImageKey[];
   // "duo" chapters render two-up with a divider (Ch1 + Ch2 in the Figma).
   layout: "duo" | "text-left" | "text-right";
 };
@@ -69,7 +72,7 @@ export const EXPLORE_CHAPTERS: Chapter[] = [
       'Wells of Kissonerga-Mylouthia — "Among the earliest wells ever discovered worldwide"',
       "Evidence of hunter-gatherer mountain settlement at Agios Ioannis-Roudias",
     ],
-    gallery: 0,
+    images: [],
     layout: "duo",
   },
   {
@@ -87,7 +90,7 @@ export const EXPLORE_CHAPTERS: Chapter[] = [
       "Picrolite cruciform figurines + manufacturing workshop",
       "Reconstructed House of Pithos · Kissonerga-Mosfilia",
     ],
-    gallery: 0,
+    images: [],
     layout: "duo",
   },
   {
@@ -108,7 +111,7 @@ export const EXPLORE_CHAPTERS: Chapter[] = [
       'Maa-Paliokastro fortified settlement · "Period of crisis" in the Eastern Mediterranean',
       "Two reconstructed elite burials · Luxury goods echoing Homer's descriptions",
     ],
-    gallery: 2,
+    images: ["exploreBronze1", "exploreBronze2"],
     layout: "text-left",
   },
   {
@@ -127,7 +130,7 @@ export const EXPLORE_CHAPTERS: Chapter[] = [
       "Series of male statues · luxury dedications to the Aphrodite sanctuary",
       'Cypro-syllabic inscriptions · "A direct line of communication across millennia"',
     ],
-    gallery: 2,
+    images: ["exploreIron1", "exploreIron2"],
     layout: "text-left",
   },
   {
@@ -145,7 +148,7 @@ export const EXPLORE_CHAPTERS: Chapter[] = [
       'Amphora collection · "evidence of Mediterranean-wide trade"',
       "Lead weights and scale, tools of the ancient Nea Pafos marketplace",
     ],
-    gallery: 3,
+    images: ["exploreHellenistic1", "exploreHellenistic2", "exploreHellenistic3"],
     layout: "text-right",
   },
   {
@@ -164,7 +167,7 @@ export const EXPLORE_CHAPTERS: Chapter[] = [
       'Medical instruments from surgeons’ tombs · "Pafos as a Roman medical centre"',
       "Honorary inscription to Antoninus Pius & Marcus Aurelius · largest ever found in Pafos, 2nd c. AD, the last thing the visitor sees",
     ],
-    gallery: 2,
+    images: ["exploreRoman1", "exploreRoman2"],
     layout: "text-left",
   },
 ];

@@ -20,7 +20,7 @@ export function ExploreTimeline() {
       </section>
 
       {/* Bronze & Iron Age — warm blush region with the full-bleed panorama */}
-      <section className="bg-[#f6ece3] py-24 lg:py-32">
+      <section className="bg-era-bronze-bg py-24 lg:py-32">
         <div className="px-6 lg:px-20">
           <JourneyChapter chapter={byId("bronze")} />
         </div>
@@ -31,7 +31,7 @@ export function ExploreTimeline() {
       </section>
 
       {/* Hellenistic — cool blue region, gallery collage on the left */}
-      <section className="bg-[#e9edf4] px-6 py-24 lg:px-20 lg:py-32">
+      <section className="bg-era-hellenistic-bg px-6 py-24 lg:px-20 lg:py-32">
         <JourneyChapter chapter={byId("hellenistic")} />
       </section>
 

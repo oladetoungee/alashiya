@@ -1,28 +1,12 @@
 import type { Chapter } from "@/lib/explore";
 import { Reveal } from "../reveal";
-import { withEmphasis } from "./emphasis";
+import { ChapterIntro } from "./chapter-intro";
 import { KeyFinds } from "./key-finds";
 
 function DuoColumn({ chapter }: { chapter: Chapter }) {
   return (
     <div className="flex flex-col">
-      <p className="type-pre-title text-flame">{chapter.number}</p>
-      <h2 className="mt-4 font-hero text-2xl font-medium leading-snug tracking-[-0.01em] text-ink lg:text-3xl">
-        {chapter.title}
-      </h2>
-      <p className="mt-2 font-hero text-base font-medium text-period-hellenistic lg:text-lg">
-        {chapter.subtitle}
-      </p>
-      <p className="mt-3 type-small font-medium text-period-hellenistic/80">
-        Date range: {chapter.dateRange}
-      </p>
-
-      <div className="mt-5 space-y-4 type-body text-ink/65">
-        {chapter.body.map((paragraph) => (
-          <p key={paragraph}>{withEmphasis(paragraph, chapter.emphasis)}</p>
-        ))}
-      </div>
-
+      <ChapterIntro chapter={chapter} />
       <div className="mt-auto pt-7">
         <KeyFinds finds={chapter.keyFinds} emphasis={chapter.emphasis} />
       </div>

@@ -21,8 +21,7 @@ const ACCENT: Record<
 };
 
 export function ExploreHero() {
-  // Reuses the museum floor-plan asset already in the registry (Map.svg).
-  const floorPlan = IMAGES.aboutMap;
+  const floorPlan = IMAGES.museumArchitecture;
 
   return (
     <section className="bg-surface px-6 pt-20 pb-20 lg:px-20 lg:pt-28 lg:pb-28">
@@ -79,16 +78,15 @@ export function ExploreHero() {
         </div>
 
         <Reveal delay={160}>
-          <div className="relative aspect-800/536 w-full overflow-hidden">
-            <Image
-              src={floorPlan.src}
-              alt="Museum floor plan — the visitor route, each period marked by a different colour"
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-contain"
-              priority
-            />
-          </div>
+          <Image
+            src={floorPlan.src}
+            alt={floorPlan.alt}
+            width={floorPlan.width}
+            height={floorPlan.height}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="h-auto w-full"
+            priority
+          />
         </Reveal>
       </div>
     </section>

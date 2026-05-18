@@ -186,6 +186,72 @@ export const IMAGES = {
     width: 1440,
     height: 493,
   },
+  museumArchitecture: {
+    src: "/images/museum-architecture.svg",
+    alt: "Museum floor plan — the visitor route, each period marked by a different colour",
+    width: 632,
+    height: 640,
+  },
+  exploreBronze1: {
+    src: "/images/bronze-age-1.svg",
+    alt: "Bronze Age gallery display",
+    width: 408,
+    height: 248,
+  },
+  exploreBronze2: {
+    src: "/images/bronze-age-2.svg",
+    alt: "Bronze Age artefacts in a vitrine",
+    width: 408,
+    height: 233,
+  },
+  exploreIron1: {
+    src: "/images/iron-age-1.svg",
+    alt: "Iron Age gallery room",
+    width: 448,
+    height: 290,
+  },
+  exploreIron2: {
+    src: "/images/iron-age-2.svg",
+    alt: "Iron Age artefacts in a display case",
+    width: 448,
+    height: 268,
+  },
+  exploreHellenistic1: {
+    src: "/images/hellenistic-1.svg",
+    alt: "Hellenistic artefact",
+    width: 192,
+    height: 264,
+  },
+  exploreHellenistic2: {
+    src: "/images/hellenistic-2.svg",
+    alt: "Hellenistic sculpture",
+    width: 192,
+    height: 264,
+  },
+  exploreHellenistic3: {
+    src: "/images/hellenistic-3.svg",
+    alt: "Hellenistic amphora collection",
+    width: 408,
+    height: 252,
+  },
+  exploreRoman1: {
+    src: "/images/roman.svg",
+    alt: "Roman period gallery display",
+    width: 408,
+    height: 244,
+  },
+  exploreRoman2: {
+    src: "/images/roman-2.svg",
+    alt: "Roman artefacts in a display case",
+    width: 408,
+    height: 320,
+  },
+  exploreGalleryBand: {
+    src: "/images/image-group-explore.svg",
+    alt: "Panoramic view of the museum's vitrine galleries",
+    width: 1440,
+    height: 470,
+  },
 } as const satisfies Record<string, ImageAsset>;
 
 export type ImageKey = keyof typeof IMAGES;

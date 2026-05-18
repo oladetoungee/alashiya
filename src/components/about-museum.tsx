@@ -5,7 +5,7 @@ import { Reveal } from "./reveal";
 
 export function AboutMuseum() {
   return (
-    <section className="px-6 py-24 lg:px-20 lg:py-32">
+    <section className="bg-nav px-6 py-24 lg:px-20 lg:py-32">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
         <Reveal className="flex flex-col gap-8">
           <div>
