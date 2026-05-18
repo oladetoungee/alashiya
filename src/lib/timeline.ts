@@ -51,6 +51,7 @@ export const TIMELINE_ERAS: Era[] = [
       "Agricultural implements",
     ],
     layout: "text-left",
+    illustration: "timelinePrehistory",
   },
   {
     id: "ancient-history",
@@ -76,6 +77,7 @@ export const TIMELINE_ERAS: Era[] = [
       "Cypro-Syllabic inscriptions",
     ],
     layout: "text-right",
+    illustration: "timelineAncient",
   },
   {
     id: "middle-ages",
@@ -101,6 +103,7 @@ export const TIMELINE_ERAS: Era[] = [
       "Gold coins",
     ],
     layout: "text-left",
+    illustration: "timelineMiddleAges",
   },
 ];
 

@@ -10,7 +10,7 @@ const HeroModel = dynamic(
 
 export function Hero() {
   return (
-    <section className="grid grid-cols-1 bg-sand lg:grid-cols-[1fr_2fr_280px] lg:min-h-[calc(100vh-8rem)]">
+    <section className="grid grid-cols-1 bg-nav lg:grid-cols-[1fr_2fr_280px] lg:min-h-[calc(100vh-8rem)]">
       {/* Title block */}
       <div
         className="hero-fade-in flex flex-col justify-center gap-5 px-8 py-16 lg:px-20"

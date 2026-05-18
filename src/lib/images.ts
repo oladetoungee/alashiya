@@ -252,6 +252,24 @@ export const IMAGES = {
     width: 1440,
     height: 470,
   },
+  timelinePrehistory: {
+    src: "/images/prehistory.svg",
+    alt: "Engraving of a Prehistoric stone pillar",
+    width: 155,
+    height: 399,
+  },
+  timelineAncient: {
+    src: "/images/ancient.svg",
+    alt: "Engraving of an Ancient History inscribed pillar",
+    width: 191,
+    height: 436,
+  },
+  timelineMiddleAges: {
+    src: "/images/middle-age.svg",
+    alt: "Engraving of a Roman & Byzantine column capital",
+    width: 155,
+    height: 399,
+  },
 } as const satisfies Record<string, ImageAsset>;
 
 export type ImageKey = keyof typeof IMAGES;

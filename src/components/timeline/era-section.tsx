@@ -20,7 +20,7 @@ export function EraSection({ era }: { era: Era }) {
     >
       <div className="mx-auto max-w-7xl">
         <Reveal className="text-center">
-          <p className="type-eyebrow text-flame">{era.eyebrow}</p>
+          <p className="type-eyebrow text-hero-gold">{era.eyebrow}</p>
         </Reveal>
 
         <div className="mt-12 grid grid-cols-1 gap-12 lg:mt-16 lg:grid-cols-3 lg:items-center lg:gap-16">
