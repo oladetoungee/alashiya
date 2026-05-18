@@ -289,14 +289,12 @@ body {
   }
 }
 
-/* Greek-key (meander) band — decorative footer border */
+/* Greek-key (meander) band — tiles full-width at a fixed, undistorted height */
 .meander {
-  height: 28px;
-  background-color: var(--flame);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='28' viewBox='0 0 56 28'%3E%3Cpath fill='none' stroke='%23000' stroke-width='3' d='M4 24V8h16v12h-8v-6h12V4H0'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='28' viewBox='0 0 56 28'%3E%3Cpath fill='none' stroke='%23000' stroke-width='3' d='M4 24V8h16v12h-8v-6h12V4H0'/%3E%3C/svg%3E");
-  -webkit-mask-repeat: repeat-x;
-  mask-repeat: repeat-x;
-  -webkit-mask-size: 56px 28px;
-  mask-size: 56px 28px;
+  height: 38px;
+  background-image: url("/images/Union.svg");
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: left center;
 }
+

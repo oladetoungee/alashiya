@@ -42,6 +42,24 @@ export const IMAGES = {
     width: 1880,
     height: 1253,
   },
+  newsDiscoveries: {
+    src: "/images/new-discoveries.svg",
+    alt: "Excavations at the Pafos Archaeological Park",
+    width: 408,
+    height: 185,
+  },
+  newsCyprusMuseum: {
+    src: "/images/cyprus-museum.svg",
+    alt: "The restored Bronze Age gallery at the Cyprus Museum",
+    width: 408,
+    height: 185,
+  },
+  newsUnesco: {
+    src: "/images/unesco.svg",
+    alt: "Aerial view of the Pafos UNESCO World Heritage site",
+    width: 408,
+    height: 185,
+  },
 } as const satisfies Record<string, ImageAsset>;
 
 export type ImageKey = keyof typeof IMAGES;
