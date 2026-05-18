@@ -27,6 +27,12 @@
   --explore-timeline-bg: #f4e8d1; /* card 2 background tint */
   --explore-stories: #2e5e8b;     /* card 3 accent (blue) */
   --explore-stories-bg: #e3e9f1;  /* card 3 background tint */
+
+  /* About — exhibition-route period legend swatches (fixed both modes) */
+  --period-prehistory: #d8d2c2;   /* light stone */
+  --period-bronze: #d8800f;       /* Bronze–Iron Age (orange) */
+  --period-hellenistic: #2e5e8b;  /* Hellenistic (blue) */
+  --period-roman: #9b9b91;        /* Roman & further (grey) */
 }
 
 .dark {
@@ -67,6 +73,10 @@
   --color-explore-timeline-bg: var(--explore-timeline-bg);
   --color-explore-stories: var(--explore-stories);
   --color-explore-stories-bg: var(--explore-stories-bg);
+  --color-period-prehistory: var(--period-prehistory);
+  --color-period-bronze: var(--period-bronze);
+  --color-period-hellenistic: var(--period-hellenistic);
+  --color-period-roman: var(--period-roman);
 
   /* Family aliases — components reference these, not the next/font vars */
   --font-display: var(--font-roboto-slab); /* Roboto Slab, per Figma */

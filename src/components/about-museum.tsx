@@ -1,9 +1,11 @@
+import Image from "next/image";
+import { IMAGES } from "@/lib/images";
 import { ABOUT_STATS } from "@/lib/visit";
 import { Reveal } from "./reveal";
 
 export function AboutMuseum() {
   return (
-    <section className="px-6 py-24 lg:px-10 lg:py-32">
+    <section className="px-6 py-24 lg:px-20 lg:py-32">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
         <Reveal className="flex flex-col gap-8">
           <div>
@@ -11,20 +13,20 @@ export function AboutMuseum() {
             <div className="mt-2 h-px w-12 bg-flame" />
           </div>
 
-          <h2 className="font-display text-3xl font-normal leading-[1.05] tracking-[-0.02em] text-ink lg:text-5xl">
+          <h2 className="font-hero text-3xl font-medium leading-[1.05] tracking-[-0.02em] text-ink lg:text-5xl">
             From 1964
             <br />
             to the Present
           </h2>
 
-          <div className="space-y-4 type-body text-ink/70">
-            <p>
+          <div className="space-y-4 type-body">
+            <p className="text-ink/75">
               Opened in 1964, shortly after Cyprus gained independence, the
               Pafos Archaeological Museum has grown from two modest exhibition
               rooms into one of the island&apos;s foremost cultural
               institutions.
             </p>
-            <p>
+            <p className="text-ink/55">
               Completely redesigned in 2014–2020 with EU co-funding, the museum
               now offers a chronological journey through the Pafos
               District&apos;s extraordinary past, from the earliest known
@@ -38,31 +40,32 @@ export function AboutMuseum() {
             stat.image ? (
               <div
                 key={stat.id}
-                className="relative flex min-h-40 flex-col justify-end overflow-hidden border-t-2 border-flame/70 p-6"
+                className="relative flex min-h-40 flex-col justify-end overflow-hidden border-t-2 border-gold p-6"
               >
-                {/* photo placeholder until assets land */}
+                <Image
+                  src={IMAGES[stat.image].src}
+                  alt={IMAGES[stat.image].alt}
+                  fill
+                  sizes="(min-width: 1024px) 25vw, 50vw"
+                  className="object-cover"
+                />
                 <div
                   aria-hidden
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, #4a3f2e 0%, #2e2a22 100%)",
-                  }}
+                  className="absolute inset-0 bg-linear-to-t from-footer/85 via-footer/25 to-transparent"
                 />
-                <div aria-hidden className="absolute inset-0 bg-black/25" />
-                <p className="relative font-display text-xl font-normal text-[#efe7d5] lg:text-2xl">
+                <p className="relative font-hero text-2xl font-medium text-footer-ink lg:text-3xl">
                   {stat.value}
                 </p>
-                <p className="relative mt-1 type-small text-[#efe7d5]/70">
+                <p className="relative mt-1 type-small font-semibold text-footer-ink">
                   {stat.label}
                 </p>
               </div>
             ) : (
               <div
                 key={stat.id}
-                className="flex min-h-40 flex-col justify-end border-t-2 border-flame/70 bg-surface p-6"
+                className="flex min-h-40 flex-col justify-start border-t-2 border-gold bg-surface p-6"
               >
-                <p className="font-display text-xl font-normal text-ink lg:text-2xl">
+                <p className="font-hero text-2xl font-medium text-ink lg:text-3xl">
                   {stat.value}
                 </p>
                 <p className="mt-1 type-small text-ink/50">{stat.label}</p>

@@ -1,3 +1,5 @@
+import type { ImageKey } from "./images";
+
 export type VisitColumn = {
   id: string;
   category: string;
@@ -44,12 +46,17 @@ export type AboutStat = {
   id: string;
   value: string;
   label: string;
-  image?: boolean; // renders a photo placeholder backdrop until assets land
+  image?: ImageKey; // photo backdrop, keyed into the image registry
 };
 
 export const ABOUT_STATS: AboutStat[] = [
   { id: "opened", value: "1964", label: "Year Opened" },
-  { id: "renovated", value: "1978", label: "Year Renovated", image: true },
-  { id: "updated", value: "2020", label: "Last Update", image: true },
+  {
+    id: "renovated",
+    value: "1978",
+    label: "Year Renovated",
+    image: "yearRenovated",
+  },
+  { id: "updated", value: "2020", label: "Last Update", image: "lastUpdate" },
   { id: "eu", value: "EU Co-Funded", label: "2014–2020 Redesign" },
 ];
