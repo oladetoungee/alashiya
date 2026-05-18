@@ -138,6 +138,54 @@ export const IMAGES = {
     width: 800,
     height: 536,
   },
+  teamHatim: {
+    src: "/images/hatim.svg",
+    alt: "Hatim Lachyab",
+    width: 232,
+    height: 200,
+  },
+  teamRobina: {
+    src: "/images/robina.svg",
+    alt: "Robina Schwarzburger",
+    width: 232,
+    height: 200,
+  },
+  teamLiu: {
+    src: "/images/liu.svg",
+    alt: "Liu Qianying",
+    width: 232,
+    height: 200,
+  },
+  teamGbemisola: {
+    src: "/images/gbemisola.svg",
+    alt: "Gbemisola Oladetoun",
+    width: 232,
+    height: 200,
+  },
+  teamQianwen: {
+    src: "/images/qianwen.svg",
+    alt: "Qianwen Hou",
+    width: 232,
+    height: 200,
+  },
+  teamAnirban: {
+    src: "/images/anirban.svg",
+    alt: "Anirban Tasfin Azad",
+    width: 232,
+    height: 200,
+  },
+  teamRyan: {
+    src: "/images/ryan.svg",
+    alt: "Ryan Dibeh",
+    width: 232,
+    height: 200,
+  },
+  teamAckBg: {
+    src: "/images/acknowledgement-bg.svg",
+    alt: "",
+    width: 1440,
+    height: 493,
+  },
 } as const satisfies Record<string, ImageAsset>;
 
 export type ImageKey = keyof typeof IMAGES;

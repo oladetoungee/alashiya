@@ -20,6 +20,7 @@
 
   /* Explore section — card text stays dark on the light tints in both modes */
   --card-ink: #1c1c1c;
+  --placeholder: #cdccc7;         /* neutral grey — photo-pending image slots */
   --explore-rule: #d9c9a3;        /* divider under the subtitle */
   --explore-tour: #6f8f4e;        /* card 1 accent (green) */
   --explore-tour-bg: #ededea;     /* card 1 background tint */
@@ -66,6 +67,7 @@
   --color-hero-gold: var(--hero-gold);
   --color-hero-ghost: var(--hero-ghost);
   --color-card-ink: var(--card-ink);
+  --color-placeholder: var(--placeholder);
   --color-explore-rule: var(--explore-rule);
   --color-explore-tour: var(--explore-tour);
   --color-explore-tour-bg: var(--explore-tour-bg);

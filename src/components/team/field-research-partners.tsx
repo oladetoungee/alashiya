@@ -9,13 +9,13 @@ const ACCENT: Record<FieldPartner["accent"], string> = {
 
 export function FieldResearchPartners() {
   return (
-    <section className="bg-bg px-6 py-24 lg:px-20 lg:py-32">
+    <section className="bg-nav px-6 py-24 lg:px-20 lg:py-32">
       <div className="mx-auto max-w-7xl">
         <Reveal className="text-center">
           <h2 className="font-hero text-3xl font-medium leading-[1.1] tracking-[-0.02em] text-ink lg:text-[2.75rem]">
             {FIELD_RESEARCH.heading}
           </h2>
-          <p className="mt-4 type-eyebrow text-hero-gold">
+          <p className="mt-4 type-eyebrow text-flame">
             {FIELD_RESEARCH.eyebrow}
           </p>
         </Reveal>

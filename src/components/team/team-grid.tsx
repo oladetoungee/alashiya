@@ -9,7 +9,7 @@ export function TeamGrid() {
         <div className="grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 lg:grid-cols-5 lg:gap-x-6 lg:gap-y-12">
           {TEAM_MEMBERS.map((member, index) => (
             <Reveal key={member.id} delay={(index % 5) * 90}>
-              <TeamCard member={member} index={index} />
+              <TeamCard member={member} />
             </Reveal>
           ))}
         </div>

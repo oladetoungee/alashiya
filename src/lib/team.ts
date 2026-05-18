@@ -20,23 +20,54 @@ export type TeamMember = {
 };
 
 export const TEAM_MEMBERS: TeamMember[] = [
-  { id: "hatim", name: "Hatim Lachyab", role: "Design & Development" },
+  {
+    id: "hatim",
+    name: "Hatim Lachyab",
+    role: "Design & Development",
+    image: "teamHatim",
+  },
   {
     id: "robina",
     name: "Robina Schwarzburger",
-    role: "Content + Story & Illustrations",
+    role: "Content + Story & design",
+    image: "teamRobina",
   },
-  { id: "liu", name: "Liu Qianying", role: "Head of Content + 3D-Artist" },
-  { id: "gbemisola", name: "Gbemisola Oladetoun", role: "Head of Development" },
+  {
+    id: "liu",
+    name: "Liu Qianying",
+    role: "Head of Content + 3D-Artist",
+    image: "teamLiu",
+  },
+  {
+    id: "gbemisola",
+    name: "Gbemisola Oladetoun",
+    role: "Head of Development",
+    image: "teamGbemisola",
+  },
   { id: "aminata", name: "Aminata Tendonge", role: "PM + Research & Design" },
-  { id: "qianwen", name: "Qianwen Hou", role: "Content & Audio Design" },
+  {
+    id: "qianwen",
+    name: "Qianwen Hou",
+    role: "Content & Audio Design",
+    image: "teamQianwen",
+  },
   {
     id: "sahar",
     name: "Sahar Shahverdi",
     role: "User Research & Presentation",
   },
-  { id: "anirban", name: "Anirban Tasfin Azad", role: "Research & UX Design" },
-  { id: "ryan", name: "Ryan Dibeh", role: "Development & Connector" },
+  {
+    id: "anirban",
+    name: "Anirban Tasfin Azad",
+    role: "Research & UX Design",
+    image: "teamAnirban",
+  },
+  {
+    id: "ryan",
+    name: "Ryan Dibeh",
+    role: "Development & Connector",
+    image: "teamRyan",
+  },
   { id: "ali", name: "Ali Reza", role: "Presentation" },
 ];
 

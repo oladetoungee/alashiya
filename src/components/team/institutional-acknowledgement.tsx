@@ -5,11 +5,14 @@ import { Reveal } from "../reveal";
 
 export function InstitutionalAcknowledgement() {
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(135deg,#e2dfd2_0%,#d6d2c4_55%,#cdc8b8_100%)] px-6 py-24 lg:px-20 lg:py-32">
-      {/* Soft light sheen, lower-right — matches the gentle vignette in Figma */}
-      <div
+    <section className="relative overflow-hidden px-6 py-24 lg:px-20 lg:py-32">
+      <Image
+        src={IMAGES.teamAckBg.src}
+        alt={IMAGES.teamAckBg.alt}
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_90%_at_85%_100%,rgba(255,255,255,0.45)_0%,transparent_55%)]"
+        fill
+        sizes="100vw"
+        className="object-cover"
       />
 
       <div className="relative mx-auto max-w-3xl text-center">
@@ -29,7 +32,7 @@ export function InstitutionalAcknowledgement() {
               className="h-12 w-auto"
             />
             <div className="text-left">
-              <p className="type-eyebrow text-hero-gold">
+              <p className="type-eyebrow text-flame">
                 {INSTITUTIONAL_ACK.eyebrow}
               </p>
               <p className="mt-1.5 font-hero text-2xl font-medium leading-tight text-ink lg:text-[1.75rem]">
