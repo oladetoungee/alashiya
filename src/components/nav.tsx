@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IMAGES } from "@/lib/images";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -15,7 +15,7 @@ const NAV_LINKS = [
   { href: "/collection", label: "Collection" },
   { href: "/about", label: "About" },
   { href: "/team", label: "Team" },
-  { href: "/visit", label: "Visit Us" },
+  // { href: "/visit", label: "Visit Us" },
 ];
 
 function isActive(pathname: string, href: string) {
@@ -28,14 +28,9 @@ export function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  // Close the mobile menu whenever the route changes.
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
   return (
-    <nav className="relative z-40 flex h-22 items-center justify-between gap-6 border-b-2 border-gold bg-nav px-6 lg:px-20">
-      <div className="flex items-center gap-4">
+    <nav className="relative z-40 flex h-22 items-center justify-between gap-3 border-b-2 border-gold bg-nav px-4 sm:gap-6 sm:px-6 lg:px-20">
+      <div className="flex min-w-0 items-center gap-2 sm:gap-4">
         <Image
           src={IMAGES.cyprusEmblem.src}
           alt={IMAGES.cyprusEmblem.alt}
@@ -50,7 +45,7 @@ export function Nav() {
           height={IMAGES.departmentOfAntiquities.height}
           className="h-10 w-auto"
         />
-        <div className="ml-1 border-l border-gold pl-4 leading-tight">
+        <div className="ml-1 hidden border-l border-gold pl-4 leading-tight sm:block">
           <p className="type-eyebrow text-gold">Archaeological Museum</p>
           <p className="mt-1 font-body text-base font-normal text-ink">
             Pafos District
@@ -78,7 +73,7 @@ export function Nav() {
         })}
       </ul>
 
-      <div className="flex items-center gap-5">
+      <div className="flex shrink-0 items-center gap-3 sm:gap-5">
         <ThemeToggle />
         <span className="hidden h-7 w-px bg-gold sm:block" />
         <Link
