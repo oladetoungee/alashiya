@@ -1,8 +1,10 @@
 "use client";
 
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { IMAGES } from "@/lib/images";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -24,9 +26,15 @@ function isActive(pathname: string, href: string) {
 
 export function Nav() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  // Close the mobile menu whenever the route changes.
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
-    <nav className="relative z-30 flex h-22 items-center justify-between gap-6 border-b-2 border-gold bg-nav px-6 lg:px-20">
+    <nav className="relative z-40 flex h-22 items-center justify-between gap-6 border-b-2 border-gold bg-nav px-6 lg:px-20">
       <div className="flex items-center gap-4">
         <Image
           src={IMAGES.cyprusEmblem.src}
@@ -79,7 +87,55 @@ export function Nav() {
         >
           Get Tickets
         </Link>
+        <button
+          type="button"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          onClick={() => setOpen((v) => !v)}
+          className="text-ink lg:hidden"
+        >
+          {open ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Menu className="h-6 w-6" />
+          )}
+        </button>
       </div>
+
+      {/* Mobile fold-out menu */}
+      {open && (
+        <div
+          id="mobile-menu"
+          className="absolute inset-x-0 top-full z-40 border-b-2 border-gold bg-nav px-6 pt-2 pb-6 shadow-lg lg:hidden"
+        >
+          <ul className="flex flex-col">
+            {NAV_LINKS.map((link) => {
+              const active = isActive(pathname, link.href);
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className={`block border-b border-gold/20 py-4 type-nav transition-colors ${
+                      active ? "text-gold" : "text-ink/75 hover:text-ink"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+          <Link
+            href="/tickets"
+            onClick={() => setOpen(false)}
+            className="mt-5 block rounded-md border-2 border-gold-strong py-3 text-center font-ui text-sm text-ink transition-colors hover:bg-gold-strong hover:text-nav"
+          >
+            Get Tickets
+          </Link>
+        </div>
+      )}
     </nav>
   );
 }

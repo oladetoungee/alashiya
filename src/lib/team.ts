@@ -29,7 +29,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
   {
     id: "robina",
     name: "Robina Schwarzburger",
-    role: "Content + Story & design",
+    role: "Content + Story & Design",
     image: "teamRobina",
   },
   {
