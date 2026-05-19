@@ -42,13 +42,26 @@ export const ROUTE_PERIODS: RoutePeriod[] = [
   { id: "roman", label: "Roman Period & Further", swatch: "roman" },
 ];
 
-export const SITE_LOCATIONS = [
-  "Nea Paphos",
-  "Palaipafos (Kouklia)",
-  "Marion–Arsinoe (Polis)",
-  "Kissonerga",
-  "Lempa",
-  "Pegeia",
+export type SiteLocation = {
+  name: string;
+  // Decimal coordinates of the archaeological site (researched, WGS84).
+  lat: number;
+  lng: number;
+};
+
+export const SITE_LOCATIONS: SiteLocation[] = [
+  // Paphos Archaeological Park, Kato Pafos
+  { name: "Nea Paphos", lat: 34.7583, lng: 32.4056 },
+  // Sanctuary of Aphrodite, Kouklia village
+  { name: "Palaipafos (Kouklia)", lat: 34.7064, lng: 32.5829 },
+  // Ancient Marion / Arsinoe, modern Polis Chrysochous
+  { name: "Marion–Arsinoe (Polis)", lat: 35.035, lng: 32.4219 },
+  // Kissonerga-Mosphilia / Mylouthkia, Kissonerga village
+  { name: "Kissonerga", lat: 34.8282, lng: 32.4071 },
+  // Lemba Chalcolithic site, Lempa (Lemba) village
+  { name: "Lempa", lat: 34.8118, lng: 32.4061 },
+  // Agios Georgios tis Pegeias, Cape Drepanon
+  { name: "Pegeia", lat: 34.9, lng: 32.326 },
 ];
 
 export const SITE_LOCATIONS_INTRO =

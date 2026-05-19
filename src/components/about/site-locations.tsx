@@ -1,7 +1,6 @@
-import Image from "next/image";
 import { SITE_LOCATIONS, SITE_LOCATIONS_INTRO } from "@/lib/about";
-import { IMAGES } from "@/lib/images";
 import { Reveal } from "../reveal";
+import { SiteMapEmbed } from "./site-map-embed";
 
 export function SiteLocations() {
   return (
@@ -25,11 +24,11 @@ export function SiteLocations() {
             <ul>
               {SITE_LOCATIONS.map((site) => (
                 <li
-                  key={site}
+                  key={site.name}
                   className="group flex items-center justify-between border-b border-gold py-5"
                 >
                   <span className="font-hero text-2xl font-medium text-ink transition-colors group-hover:text-flame lg:text-[1.7rem]">
-                    {site}
+                    {site.name}
                   </span>
                 </li>
               ))}
@@ -37,15 +36,7 @@ export function SiteLocations() {
           </Reveal>
 
           <Reveal delay={120}>
-            <div className="relative aspect-800/536 w-full overflow-hidden">
-              <Image
-                src={IMAGES.aboutMap.src}
-                alt={IMAGES.aboutMap.alt}
-                fill
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </div>
+            <SiteMapEmbed />
           </Reveal>
         </div>
       </div>
