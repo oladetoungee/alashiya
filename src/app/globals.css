@@ -86,12 +86,15 @@
   --color-era-bronze-bg: var(--era-bronze-bg);
   --color-era-hellenistic-bg: var(--era-hellenistic-bg);
 
-  /* Family aliases — components reference these, not the next/font vars */
+  /* Family aliases — components reference these, not the next/font vars.
+     Designer fonts (Rojenstone + Cera Pro) are loaded locally from
+     /public/font/. The Google-font entries that follow are kept for the
+     specialised roles (display headings, italic accent, etc.). */
   --font-display: var(--font-roboto-slab); /* Roboto Slab, per Figma */
-  --font-hero: var(--font-fraunces); /* hero title only */
-  --font-body: var(--font-eczar);
+  --font-hero: var(--font-rojenstone); /* paid display serif */
+  --font-body: var(--font-cera-pro); /* paid sans — body copy */
+  --font-ui: var(--font-cera-pro); /* paid sans — UI / nav / eyebrows */
   --font-link: var(--font-work-sans);
-  --font-ui: var(--font-dm-sans); /* Cera Pro (substituted) + DM Sans */
   --font-accent: var(--font-playfair);
   --font-mono: var(--font-geist-mono);
 }
@@ -100,7 +103,8 @@ html,
 body {
   background: var(--bg);
   color: var(--ink);
-  font-family: var(--font-body), Georgia, "Times New Roman", serif;
+  font-family: var(--font-body), system-ui, -apple-system, "Helvetica Neue",
+    Arial, sans-serif;
   overflow-x: hidden;
 }
 
