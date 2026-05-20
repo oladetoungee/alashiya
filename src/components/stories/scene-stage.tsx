@@ -9,6 +9,7 @@ import {
   VolumeX,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { IMAGES } from "@/lib/images";
@@ -17,8 +18,8 @@ import { ModelViewer } from "../model-viewer";
 
 type Props = {
   scene: StoryScene;
-  // Where the gold CTA goes. On the final scene this is "/" — the story
-  // ends by sending the visitor back to the home page.
+  // Where the gold CTA + forward arrow go. On the final scene this is "/" —
+  // the story ends by sending the visitor back to the home page.
   nextHref: string;
   // Previous scene route, or null on the first scene.
   prevHref: string | null;
@@ -81,7 +82,6 @@ export function SceneStage({
   const [muted, setMuted] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
   const voRef = useRef<HTMLAudioElement | null>(null);
-  const sfxRef = useRef<HTMLAudioElement | null>(null);
   const stageRef = useRef<HTMLDivElement | null>(null);
 
   const playVoiceover = useCallback(() => {
@@ -94,33 +94,21 @@ export function SceneStage({
     });
   }, [muted]);
 
-  const playSfx = useCallback(() => {
-    const el = sfxRef.current;
-    if (!el || muted) return;
-    el.currentTime = 0;
-    el.play().catch(() => {});
-  }, [muted]);
-
   useEffect(() => {
     playVoiceover();
     const vo = voRef.current;
-    const sfx = sfxRef.current;
     return () => {
       vo?.pause();
-      sfx?.pause();
     };
   }, [playVoiceover]);
 
   useEffect(() => {
     if (voRef.current) voRef.current.muted = muted;
-    if (sfxRef.current) sfxRef.current.muted = muted;
   }, [muted]);
 
   const handleCta = useCallback(() => {
-    if (scene.audio.sfx) playSfx();
-    // Let the SFX bite — short delay before route change feels intentional.
-    window.setTimeout(() => router.push(nextHref), scene.audio.sfx ? 220 : 0);
-  }, [nextHref, playSfx, router, scene.audio.sfx]);
+    router.push(nextHref);
+  }, [nextHref, router]);
 
   const toggleFullscreen = useCallback(async () => {
     const el = stageRef.current;
@@ -192,7 +180,7 @@ export function SceneStage({
                 loop
                 muted
                 playsInline
-                preload="auto"
+                preload="metadata"
                 aria-label={illo.alt}
                 className="absolute inset-0 h-full w-full border border-gold/40 object-cover animate-[hero-fade-in_700ms_ease-out]"
               />
@@ -262,23 +250,39 @@ export function SceneStage({
               </p>
             </div>
 
+            {/* Forward CTA — primary action, scene-specific label. */}
+            <button
+              type="button"
+              onClick={handleCta}
+              className="self-start rounded-md bg-gold-strong px-6 py-2.5 font-ui text-sm font-medium text-card-ink transition-colors hover:bg-gold"
+            >
+              {scene.cta}
+            </button>
+
             {/* 3D model panel — the artefact tied to this scene */}
             <div className="relative aspect-16/10 w-full overflow-hidden rounded-sm border-t-2 border-gold bg-surface/70 backdrop-blur-sm sm:aspect-video">
               <ModelViewer model={scene.model} />
 
-              {/* Scene navigator — prev / position / next, in the panel corner.
-                  Forward arrow on the last scene routes home; on click it
-                  also fires the scene's completion SFX. */}
+              {/* Scene navigator — prev / position / next, in the panel
+                  corner. The forward arrow mirrors the gold CTA below: same
+                  destination, same SFX trigger. */}
               <div className="absolute top-3 right-3 flex items-center gap-1 rounded-full border border-card-ink/10 bg-bg/85 p-1 backdrop-blur-sm">
-                <button
-                  type="button"
-                  onClick={() => prevHref && router.push(prevHref)}
-                  disabled={!prevHref}
-                  aria-label="Previous scene"
-                  className="flex h-7 w-7 items-center justify-center rounded-full text-card-ink/75 transition-colors hover:bg-card-ink/5 hover:text-card-ink disabled:cursor-default disabled:text-card-ink/25 disabled:hover:bg-transparent"
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                </button>
+                {prevHref ? (
+                  <Link
+                    href={prevHref}
+                    aria-label="Previous scene"
+                    className="flex h-7 w-7 items-center justify-center rounded-full text-card-ink/75 transition-colors hover:bg-card-ink/5 hover:text-card-ink"
+                  >
+                    <ChevronLeft className="h-4 w-4" />
+                  </Link>
+                ) : (
+                  <span
+                    aria-hidden
+                    className="flex h-7 w-7 items-center justify-center rounded-full text-card-ink/25"
+                  >
+                    <ChevronLeft className="h-4 w-4" />
+                  </span>
+                )}
                 <span className="px-1 font-ui text-[11px] uppercase tracking-[0.18em] text-card-ink/70">
                   {sceneNumber} / {totalScenes}
                 </span>
@@ -301,10 +305,7 @@ export function SceneStage({
         </div>
       </div>
 
-      <audio ref={voRef} src={scene.audio.voiceover} preload="auto" />
-      {scene.audio.sfx && (
-        <audio ref={sfxRef} src={scene.audio.sfx} preload="auto" />
-      )}
+      <audio ref={voRef} src={scene.voiceover} preload="auto" />
     </section>
   );
 }

@@ -1,15 +1,11 @@
 /*
   Story scene data — one source for the Alasiya Act II walkthrough.
-  Voiceover + SFX paths reference files in /public/audio.
+  Each scene's voiceover already has background music mixed in, so there's no
+  separate BGM or SFX track.
 */
 
 import type { ImageKey } from "./images";
 import type { Model3D } from "./models";
-
-export type StorySceneAudio = {
-  voiceover: string;
-  sfx?: string;
-};
 
 export type StoryScene = {
   id: string;
@@ -24,7 +20,8 @@ export type StoryScene = {
   cta: string;
   // The artefact displayed in the lower model panel for this scene.
   model: Model3D;
-  audio: StorySceneAudio;
+  // VO + background music mixed into a single track. Played once on entry.
+  voiceover: string;
 };
 
 export type Story = {
@@ -46,7 +43,8 @@ export const ALASIYA_STORY: Story = {
       id: "settlement",
       sceneLabel: "In the settlement",
       illustration: "storyAlasiya1",
-      video: "/video/Alasiya%20Explaining.mp4",
+      video:
+        "https://pub-88e47f1e62ad4b07865026261d5ac22d.r2.dev/Alasiya%20Explaining.mp4",
       background: "storySettlementBg",
       speaker: "Alasiya",
       monologue:
@@ -57,15 +55,14 @@ export const ALASIYA_STORY: Story = {
         src: "/models/vase.glb",
         caption: "Painted vase · the form she will craft",
       },
-      audio: {
-        voiceover: "/audio/vo_01_intro_alasiya.mp3",
-      },
+      voiceover: "/audio/vo_01_intro_alasiya_with_bgm.mp3",
     },
     {
       id: "workshop",
       sceneLabel: "In the courtyard workshop",
       illustration: "storyAlasiya2",
-      video: "/video/Alasiya%20Doing%20Pottery.mp4",
+      video:
+        "https://pub-88e47f1e62ad4b07865026261d5ac22d.r2.dev/Alasiya%20Doing%20Pottery.mp4",
       background: "storyWorkshopBg",
       speaker: "Alasiya",
       monologue:
@@ -76,16 +73,14 @@ export const ALASIYA_STORY: Story = {
         src: "/models/ritual-vessel.glb",
         caption: "Ritual vessel · taking shape on the wheel",
       },
-      audio: {
-        voiceover: "/audio/vo_02_courtyard_workshop.mp3",
-        sfx: "/audio/sfx_clay_molding_swipe.mp3",
-      },
+      voiceover: "/audio/vo_02_courtyard_workshop_bgm.mp3",
     },
     {
       id: "kiln",
       sceneLabel: "Firing the kiln",
       illustration: "storyAlasiya3",
-      video: "/video/Alasiya%20Holding%20Basket.mp4",
+      video:
+        "https://pub-88e47f1e62ad4b07865026261d5ac22d.r2.dev/Alasiya%20Holding%20Basket.mp4",
       background: "storyWorkshopBg",
       speaker: "Alasiya",
       monologue:
@@ -96,10 +91,7 @@ export const ALASIYA_STORY: Story = {
         src: "/models/sculpture.glb",
         caption: "The completed ceremonial vessel",
       },
-      audio: {
-        voiceover: "/audio/vo_03_final_kiln.mp3",
-        sfx: "/audio/sfx_vessel_complete.mp3",
-      },
+      voiceover: "/audio/vo_03_final_kiln_with_bgm.mp3",
     },
   ],
 };
