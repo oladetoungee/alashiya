@@ -270,6 +270,36 @@ export const IMAGES = {
     width: 155,
     height: 399,
   },
+  storyAlasiya1: {
+    src: "/images/alaysia-1.svg",
+    alt: "Alasiya, a young Cypriot pottery artisan, standing in her settlement",
+    width: 420,
+    height: 600,
+  },
+  storyAlasiya2: {
+    src: "/images/alaysia-2.svg",
+    alt: "Alasiya shaping a ceremonial vessel on the wheel in her courtyard workshop",
+    width: 428,
+    height: 608,
+  },
+  storyAlasiya3: {
+    src: "/images/alaysia-3.svg",
+    alt: "Alasiya carrying a basket of finished pots toward the kiln",
+    width: 428,
+    height: 608,
+  },
+  storySettlementBg: {
+    src: "/images/story-bg-1.jpg",
+    alt: "",
+    width: 1448,
+    height: 1086,
+  },
+  storyWorkshopBg: {
+    src: "/images/story-bg-2.png",
+    alt: "",
+    width: 1448,
+    height: 1086,
+  },
 } as const satisfies Record<string, ImageAsset>;
 
 export type ImageKey = keyof typeof IMAGES;
