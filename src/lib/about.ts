@@ -43,25 +43,91 @@ export const ROUTE_PERIODS: RoutePeriod[] = [
 ];
 
 export type SiteLocation = {
+  id: string;
   name: string;
+  // Short locational descriptor shown in the expanded card (orange line).
+  location: string;
+  // Chronological periods, rendered with "→" separators.
+  periods: string[];
+  // The descriptive paragraph shown when the site is selected.
+  body: string;
   // Decimal coordinates of the archaeological site (researched, WGS84).
   lat: number;
   lng: number;
 };
 
 export const SITE_LOCATIONS: SiteLocation[] = [
-  // Paphos Archaeological Park, Kato Pafos
-  { name: "Nea Paphos", lat: 34.7583, lng: 32.4056 },
-  // Sanctuary of Aphrodite, Kouklia village
-  { name: "Palaipafos (Kouklia)", lat: 34.7064, lng: 32.5829 },
-  // Ancient Marion / Arsinoe, modern Polis Chrysochous
-  { name: "Marion–Arsinoe (Polis)", lat: 35.035, lng: 32.4219 },
-  // Kissonerga-Mosphilia / Mylouthkia, Kissonerga village
-  { name: "Kissonerga", lat: 34.8282, lng: 32.4071 },
-  // Lemba Chalcolithic site, Lempa (Lemba) village
-  { name: "Lempa", lat: 34.8118, lng: 32.4061 },
-  // Agios Georgios tis Pegeias, Cape Drepanon
-  { name: "Pegeia", lat: 34.9, lng: 32.326 },
+  {
+    id: "nea-paphos",
+    name: "Nea Paphos",
+    location: "Coastal, present-day Pafos city centre",
+    periods: ["Hellenistic", "Roman", "Early Christian"],
+    body: "The site of ancient Cyprus's metropolitan capital, yielding some of the museum's most celebrated pieces from the Hellenistic and Roman periods. Key finds include a rare marble bust of Aphrodite and a marble statue of Asklepios, both displayed in Room 3.",
+    // Paphos Archaeological Park, Kato Pafos
+    lat: 34.7583,
+    lng: 32.4056,
+  },
+  {
+    id: "palaipafos",
+    name: "Palaipafos (Kouklia)",
+    location: "~16km east of Pafos town",
+    periods: ["Late Bronze Age", "Classical", "Hellenistic"],
+    body: "The primary source of exhibits for the museum, representing the ancient city that grew into a major centre of Cypriot civilisation. Finds span multiple periods from prehistoric times through the Classical era, including coins cut from the mint of Pafos.",
+    // Sanctuary of Aphrodite, Kouklia village
+    lat: 34.7064,
+    lng: 32.5829,
+  },
+  {
+    id: "marion-arsinoe",
+    name: "Marion–Arsinoe (Polis)",
+    location: "~35km north of Pafos, on the north coast",
+    periods: [
+      "Neolithic",
+      "Classical",
+      "Hellenistic",
+      "Roman",
+      "Byzantine",
+      "Medieval",
+    ],
+    body: "One of the three principal excavation sources for the museum's collection, contributing finds across a wide chronological range. Its most significant exhibit is a tombstone bearing the Cypro-syllabic script, displayed in the Iron Age and Classical room.",
+    // Ancient Marion / Arsinoe, modern Polis Chrysochous
+    lat: 35.035,
+    lng: 32.4219,
+  },
+  {
+    id: "kissonerga",
+    name: "Kissonerga",
+    location: "~8km north of Pafos town, coastal",
+    periods: [
+      "Pre-Pottery Neolithic (c. 7000 BCE)",
+      "Chalcolithic",
+      "Early Bronze Age",
+    ],
+    body: "A site in the Pafos district whose excavations have contributed supplementary finds to the museum's holdings. Its objects form part of the broader collection representing the development of civilisation across the district.",
+    // Kissonerga-Mosphilia / Mylouthkia, Kissonerga village
+    lat: 34.8282,
+    lng: 32.4071,
+  },
+  {
+    id: "lempa",
+    name: "Lempa",
+    location: "~7km north of Pafos town, inland from Kissonerga",
+    periods: ["Chalcolithic (c. 3800–2500 BCE)", "Medieval"],
+    body: "An excavation site within the Pafos region that has yielded finds supplementing the main collection. Its contributions sit alongside those from Kissonerga and Pegeia in representing the wider district's archaeological record.",
+    // Lemba Chalcolithic site, Lempa (Lemba) village
+    lat: 34.8118,
+    lng: 32.4061,
+  },
+  {
+    id: "pegeia",
+    name: "Pegeia",
+    location: "~18km northwest of Pafos, coastal cliffs area",
+    periods: ["Chalcolithic", "Bronze Age", "Classical"],
+    body: "A supplementary excavation site in the Pafos district contributing finds to the museum's broader collection. Specific objects from Pegeia complement the primary site finds across the five exhibition rooms.",
+    // Agios Georgios tis Pegeias, Cape Drepanon
+    lat: 34.9,
+    lng: 32.326,
+  },
 ];
 
 export const SITE_LOCATIONS_INTRO =

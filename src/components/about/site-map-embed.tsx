@@ -9,6 +9,11 @@ const SiteMap = dynamic(() => import("./site-map"), {
   loading: () => <div className="h-105 w-full bg-sand lg:h-130" />,
 });
 
-export function SiteMapEmbed() {
-  return <SiteMap />;
+type Props = {
+  selectedId: string | null;
+  onSelect: (id: string) => void;
+};
+
+export function SiteMapEmbed({ selectedId, onSelect }: Props) {
+  return <SiteMap selectedId={selectedId} onSelect={onSelect} />;
 }

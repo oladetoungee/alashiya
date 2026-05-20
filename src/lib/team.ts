@@ -71,7 +71,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
   {
     id: "ryan",
     name: "Ryan Dibeh",
-    role: "Development & Connector",
+    role: "Connector",
     image: "teamRyan",
   },
   {
