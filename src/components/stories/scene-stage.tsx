@@ -1,6 +1,8 @@
 "use client";
 
 import {
+  ChevronLeft,
+  ChevronRight,
   Maximize2,
   Minimize2,
   Volume2,
@@ -15,7 +17,11 @@ import { ModelViewer } from "../model-viewer";
 
 type Props = {
   scene: StoryScene;
-  nextHref: string | null;
+  // Where the gold CTA goes. On the final scene this is "/" — the story
+  // ends by sending the visitor back to the home page.
+  nextHref: string;
+  // Previous scene route, or null on the first scene.
+  prevHref: string | null;
   sceneNumber: number;
   totalScenes: number;
 };
@@ -67,6 +73,7 @@ function TitleFlourish({ side }: { side: "left" | "right" }) {
 export function SceneStage({
   scene,
   nextHref,
+  prevHref,
   sceneNumber,
   totalScenes,
 }: Props) {
@@ -111,10 +118,8 @@ export function SceneStage({
 
   const handleCta = useCallback(() => {
     if (scene.audio.sfx) playSfx();
-    if (nextHref) {
-      // Let the SFX bite — short delay before route change feels intentional.
-      window.setTimeout(() => router.push(nextHref), scene.audio.sfx ? 220 : 0);
-    }
+    // Let the SFX bite — short delay before route change feels intentional.
+    window.setTimeout(() => router.push(nextHref), scene.audio.sfx ? 220 : 0);
   }, [nextHref, playSfx, router, scene.audio.sfx]);
 
   const toggleFullscreen = useCallback(async () => {
@@ -157,7 +162,7 @@ export function SceneStage({
           sizes="100vw"
           className="object-cover opacity-35"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-bg/60 via-bg/40 to-bg/80" />
+        <div className="absolute inset-0 bg-linear-to-b from-bg/60 via-bg/40 to-bg/80" />
       </div>
 
       <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-12 lg:py-14">
@@ -171,30 +176,42 @@ export function SceneStage({
         </div>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(280px,360px)_1fr] lg:gap-8">
-          {/* Illustration column */}
-          <div className="relative mx-auto w-full max-w-[360px] lg:mx-0">
-            <Image
-              src={illo.src}
-              alt={illo.alt}
-              width={illo.width}
-              height={illo.height}
-              className="h-auto w-full animate-[hero-fade-in_700ms_ease-out]"
-              priority
-            />
-            {scene.id === "settlement" && (
-              <span
-                aria-hidden
-                className="absolute left-3 top-[55%] flex h-7 w-7 items-center justify-center rounded-full bg-explore-stories font-ui text-xs font-semibold text-white shadow-[0_2px_8px_rgba(0,0,0,0.25)] ring-2 ring-white/85 after:absolute after:-bottom-1 after:left-1/2 after:h-2 after:w-2 after:-translate-x-1/2 after:rotate-45 after:bg-explore-stories"
-              >
-                A
-              </span>
+          {/* Illustration / video column.
+              Aspect ratio comes from the SVG poster so the box doesn't reflow
+              when the video loads. */}
+          <div
+            className="relative mx-auto w-full max-w-90 lg:mx-0"
+            style={{ aspectRatio: `${illo.width} / ${illo.height}` }}
+          >
+            {scene.video ? (
+              <video
+                key={scene.video}
+                src={scene.video}
+                poster={illo.src}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                aria-label={illo.alt}
+                className="absolute inset-0 h-full w-full border border-gold/40 object-cover animate-[hero-fade-in_700ms_ease-out]"
+              />
+            ) : (
+              <Image
+                src={illo.src}
+                alt={illo.alt}
+                width={illo.width}
+                height={illo.height}
+                className="h-auto w-full animate-[hero-fade-in_700ms_ease-out]"
+                priority
+              />
             )}
           </div>
 
           {/* Right column — speech panel + 3D model panel */}
           <div className="flex min-w-0 flex-col gap-5">
             {/* Header strip: Play Sound · Fullscreen — sits outside the speech card */}
-            <div className="flex items-center justify-between gap-4 px-1">
+            <div className="flex items-center justify-between gap-4">
               <button
                 type="button"
                 onClick={() => {
@@ -203,25 +220,25 @@ export function SceneStage({
                   if (!next) playVoiceover();
                 }}
                 aria-pressed={!muted}
-                className="inline-flex items-center gap-2 text-ink/65 transition-colors hover:text-ink"
+                className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 font-ui text-sm font-medium transition-colors ${
+                  muted
+                    ? "border-ink/20 bg-surface/70 text-ink/70 hover:border-ink/40 hover:text-ink"
+                    : "border-flame/70 bg-flame/10 text-flame hover:bg-flame/15"
+                }`}
               >
-                <span className="font-ui text-xs">
-                  {muted ? "Sound Off" : "Play Sound"}
-                </span>
                 {muted ? (
                   <VolumeX className="h-4 w-4" />
                 ) : (
                   <Volume2 className="h-4 w-4" />
                 )}
+                <span>{muted ? "Sound Off" : "Play Sound"}</span>
               </button>
               <button
                 type="button"
                 onClick={toggleFullscreen}
-                className="inline-flex items-center gap-2 text-ink/65 transition-colors hover:text-ink"
+                className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-surface/70 px-3.5 py-1.5 font-ui text-sm font-medium text-ink/75 transition-colors hover:border-ink/40 hover:text-ink"
               >
-                <span className="font-ui text-xs">
-                  {fullscreen ? "Exit Fullscreen" : "Fullscreen"}
-                </span>
+                <span>{fullscreen ? "Exit Fullscreen" : "Fullscreen"}</span>
                 {fullscreen ? (
                   <Minimize2 className="h-4 w-4" />
                 ) : (
@@ -245,23 +262,39 @@ export function SceneStage({
               </p>
             </div>
 
-            <button
-              type="button"
-              onClick={handleCta}
-              disabled={!nextHref}
-              className="self-start rounded-md bg-gold-strong px-6 py-2.5 font-ui text-sm font-medium text-card-ink transition-colors hover:bg-gold disabled:cursor-default disabled:bg-gold/60"
-            >
-              {nextHref ? scene.cta : "End of journey"}
-            </button>
-
             {/* 3D model panel — the artefact tied to this scene */}
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-sm border-t-2 border-gold bg-surface/70 backdrop-blur-sm sm:aspect-[16/9]">
+            <div className="relative aspect-16/10 w-full overflow-hidden rounded-sm border-t-2 border-gold bg-surface/70 backdrop-blur-sm sm:aspect-video">
               <ModelViewer model={scene.model} />
-              <p className="pointer-events-none absolute bottom-3 left-4 font-ui text-[11px] uppercase tracking-[0.18em] text-card-ink/55">
+
+              {/* Scene navigator — prev / position / next, in the panel corner.
+                  Forward arrow on the last scene routes home; on click it
+                  also fires the scene's completion SFX. */}
+              <div className="absolute top-3 right-3 flex items-center gap-1 rounded-full border border-card-ink/10 bg-bg/85 p-1 backdrop-blur-sm">
+                <button
+                  type="button"
+                  onClick={() => prevHref && router.push(prevHref)}
+                  disabled={!prevHref}
+                  aria-label="Previous scene"
+                  className="flex h-7 w-7 items-center justify-center rounded-full text-card-ink/75 transition-colors hover:bg-card-ink/5 hover:text-card-ink disabled:cursor-default disabled:text-card-ink/25 disabled:hover:bg-transparent"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+                <span className="px-1 font-ui text-[11px] uppercase tracking-[0.18em] text-card-ink/70">
+                  {sceneNumber} / {totalScenes}
+                </span>
+                <button
+                  type="button"
+                  onClick={handleCta}
+                  aria-label={scene.cta}
+                  title={scene.cta}
+                  className="flex h-7 w-7 items-center justify-center rounded-full bg-gold-strong text-card-ink transition-colors hover:bg-gold"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
+
+              <p className="pointer-events-none absolute bottom-3 left-4 right-4 truncate font-ui text-[11px] uppercase tracking-[0.18em] text-card-ink/65">
                 {scene.model.caption}
-              </p>
-              <p className="pointer-events-none absolute bottom-3 right-4 font-ui text-[11px] uppercase tracking-[0.18em] text-card-ink/45">
-                Scene {sceneNumber} / {totalScenes}
               </p>
             </div>
           </div>

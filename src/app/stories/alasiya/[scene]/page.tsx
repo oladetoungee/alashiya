@@ -8,6 +8,7 @@ import { UtilityBar } from "@/components/utility-bar";
 import {
   ALASIYA_STORY,
   getNextScene,
+  getPrevScene,
   getStoryScene,
 } from "@/lib/stories";
 
@@ -39,8 +40,13 @@ export default async function StoryScenePage({
   if (!scene) notFound();
 
   const next = getNextScene(scene.id);
+  const prev = getPrevScene(scene.id);
   const sceneNumber =
     ALASIYA_STORY.scenes.findIndex((s) => s.id === scene.id) + 1;
+
+  // Last scene → CTA returns to the home page.
+  const nextHref = next ? `/stories/alasiya/${next.id}` : "/";
+  const prevHref = prev ? `/stories/alasiya/${prev.id}` : null;
 
   return (
     <div className="flex min-h-screen flex-col bg-bg">
@@ -49,7 +55,8 @@ export default async function StoryScenePage({
       <Nav />
       <SceneStage
         scene={scene}
-        nextHref={next ? `/stories/alasiya/${next.id}` : null}
+        nextHref={nextHref}
+        prevHref={prevHref}
         sceneNumber={sceneNumber}
         totalScenes={ALASIYA_STORY.scenes.length}
       />

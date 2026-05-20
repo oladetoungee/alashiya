@@ -14,7 +14,10 @@ export type StorySceneAudio = {
 export type StoryScene = {
   id: string;
   sceneLabel: string;
+  // Static frame — used as the video poster + a fallback if video can't load.
   illustration: ImageKey;
+  // Animated portrait of Alasiya for the scene. URL-encoded path under /public.
+  video?: string;
   background: ImageKey;
   speaker: string;
   monologue: string;
@@ -43,6 +46,7 @@ export const ALASIYA_STORY: Story = {
       id: "settlement",
       sceneLabel: "In the settlement",
       illustration: "storyAlasiya1",
+      video: "/video/Alasiya%20Explaining.mp4",
       background: "storySettlementBg",
       speaker: "Alasiya",
       monologue:
@@ -61,6 +65,7 @@ export const ALASIYA_STORY: Story = {
       id: "workshop",
       sceneLabel: "In the courtyard workshop",
       illustration: "storyAlasiya2",
+      video: "/video/Alasiya%20Doing%20Pottery.mp4",
       background: "storyWorkshopBg",
       speaker: "Alasiya",
       monologue:
@@ -80,11 +85,12 @@ export const ALASIYA_STORY: Story = {
       id: "kiln",
       sceneLabel: "Firing the kiln",
       illustration: "storyAlasiya3",
+      video: "/video/Alasiya%20Holding%20Basket.mp4",
       background: "storyWorkshopBg",
       speaker: "Alasiya",
       monologue:
         "There! The geometric lines flow perfectly. Just one final step—firing it in the kiln—and the vessel will be complete. I know the noble family will be deeply satisfied, and my work will accompany the departed with the utmost honour.",
-      cta: "Start Moulding",
+      cta: "Return to the Museum",
       model: {
         id: "alasiya-sculpture",
         src: "/models/sculpture.glb",
