@@ -5,7 +5,6 @@ export type NewsArticle = {
   category: string;
   title: string;
   date: string;
-  href: string;
   image: ImageKey;
 };
 
@@ -15,7 +14,6 @@ export const NEWS_ARTICLES: NewsArticle[] = [
     category: "Excavations",
     title: "New Discoveries at the Pafos Archaeological Park",
     date: "10 April 2026",
-    href: "/news/discoveries-pafos-park",
     image: "newsDiscoveries",
   },
   {
@@ -23,7 +21,6 @@ export const NEWS_ARTICLES: NewsArticle[] = [
     category: "Museums",
     title: "Cyprus Museum Reopens Restored Bronze Age Gallery",
     date: "22 March 2026",
-    href: "/news/cyprus-museum-reopens",
     image: "newsCyprusMuseum",
   },
   {
@@ -31,7 +28,6 @@ export const NEWS_ARTICLES: NewsArticle[] = [
     category: "UNESCO",
     title: "Annual UNESCO World Heritage Report Submitted",
     date: "5 March 2026",
-    href: "/news/unesco-report",
     image: "newsUnesco",
   },
 ];

@@ -47,12 +47,10 @@ export function SiteFooter() {
             <p className="mt-2 type-body text-footer-ink/75">
               {MUSEUM_CONTACT.tel}
             </p>
-            <Link
-              href="/visit"
-              className="mt-2 inline-block type-body text-gold underline underline-offset-2 transition-opacity hover:opacity-75"
-            >
+            {/* Visit page isn't built yet — keep the label, drop the link. */}
+            <span className="mt-2 inline-block type-body text-gold/65">
               Find public transport ↗
-            </Link>
+            </span>
             <p className="mt-6 max-w-sm type-body text-footer-ink/45">
               {MUSEUM_CONTACT.blurb}
             </p>
@@ -69,16 +67,24 @@ export function SiteFooter() {
           <nav>
             <FooterLabel>Sitemap</FooterLabel>
             <ul className="mt-5 space-y-4">
-              {FOOTER_SITEMAP.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="type-body text-footer-ink/85 transition-colors hover:text-footer-ink"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+              {FOOTER_SITEMAP.map((item) =>
+                item.href ? (
+                  <li key={item.label}>
+                    <Link
+                      href={item.href}
+                      className="type-body text-footer-ink/85 transition-colors hover:text-footer-ink"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ) : (
+                  <li key={item.label}>
+                    <span className="type-body text-footer-ink/55">
+                      {item.label}
+                    </span>
+                  </li>
+                ),
+              )}
             </ul>
           </nav>
           <div>

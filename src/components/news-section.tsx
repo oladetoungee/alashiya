@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { IMAGES } from "@/lib/images";
 import { NEWS_ARTICLES } from "@/lib/news";
 import { Reveal } from "./reveal";
@@ -16,10 +15,10 @@ export function NewsSection() {
         </Reveal>
 
         <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-3">
+          {/* Non-navigating cards — individual news articles aren't built yet. */}
           {NEWS_ARTICLES.map((article, i) => (
             <Reveal key={article.id} delay={i * 120} className="h-full">
-              <Link
-                href={article.href}
+              <article
                 className="group flex h-full flex-col overflow-hidden rounded-lg border border-ink/10 bg-surface shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 <div className="aspect-408/185 w-full overflow-hidden">
@@ -46,7 +45,7 @@ export function NewsSection() {
                     </span>
                   </div>
                 </div>
-              </Link>
+              </article>
             </Reveal>
           ))}
         </div>

@@ -1,8 +1,15 @@
-export const FOOTER_SITEMAP = [
+// `href` omitted → the item renders as a non-navigating label until that
+// destination page is built.
+export type FooterSitemapItem = {
+  label: string;
+  href?: string;
+};
+
+export const FOOTER_SITEMAP: FooterSitemapItem[] = [
   { label: "About Us", href: "/about" },
-  { label: "Visit Us", href: "/visit" },
-  { label: "Event Calendar", href: "/events" },
-  { label: "Join & Support", href: "/membership" },
+  { label: "Visit Us" },
+  { label: "Event Calendar" },
+  { label: "Join & Support" },
   { label: "Exhibition Catalogue", href: "/collection" },
 ];
 

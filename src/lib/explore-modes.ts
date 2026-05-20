@@ -21,7 +21,7 @@ export const EXPLORE_MODES: ExploreMode[] = [
     description:
       "Walk through the galleries in sequence, from the island's first stone villages to the grandeur of Roman Nea Pafos. Follow the curators' journey.",
     cta: "Start the Tour",
-    href: "/tour",
+    href: "/explore",
   },
   {
     id: "timeline",

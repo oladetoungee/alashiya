@@ -76,12 +76,13 @@ export function Nav() {
       <div className="flex shrink-0 items-center gap-3 sm:gap-5">
         <ThemeToggle />
         <span className="hidden h-7 w-px bg-gold sm:block" />
-        <Link
-          href="/tickets"
+        {/* Tickets page doesn't exist yet — button stays put. */}
+        <button
+          type="button"
           className="hidden rounded-md border-2 border-gold-strong px-5 py-2.5 font-ui text-sm text-ink transition-colors hover:bg-gold-strong hover:text-nav sm:inline-block"
         >
           Get Tickets
-        </Link>
+        </button>
         <button
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -122,13 +123,13 @@ export function Nav() {
               );
             })}
           </ul>
-          <Link
-            href="/tickets"
+          <button
+            type="button"
             onClick={() => setOpen(false)}
-            className="mt-5 block rounded-md border-2 border-gold-strong py-3 text-center font-ui text-sm text-ink transition-colors hover:bg-gold-strong hover:text-nav"
+            className="mt-5 block w-full rounded-md border-2 border-gold-strong py-3 text-center font-ui text-sm text-ink transition-colors hover:bg-gold-strong hover:text-nav"
           >
             Get Tickets
-          </Link>
+          </button>
         </div>
       )}
     </nav>

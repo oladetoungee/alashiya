@@ -1,6 +1,5 @@
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { IMAGES } from "@/lib/images";
 import { Reveal } from "./reveal";
 
@@ -31,15 +30,17 @@ export function BecomeMember() {
                   Members&apos; Room, plus discounts in the Museum souvenir
                   shops.
                 </p>
-                <Link
-                  href="/membership"
+                {/* Membership detail page doesn't exist yet — button stays
+                    on the home page until the destination is built. */}
+                <button
+                  type="button"
                   className="group mt-6 inline-flex items-center gap-3 rounded-md bg-gold-strong py-2.5 pl-6 pr-2.5 text-card-ink transition-colors hover:bg-gold"
                 >
                   <span className="type-pre-title">Find Out More</span>
                   <span className="flex h-7 w-7 items-center justify-center rounded-full border border-card-ink transition-transform group-hover:translate-x-0.5">
                     <ChevronRight className="h-3.5 w-3.5" />
                   </span>
-                </Link>
+                </button>
               </div>
             </div>
           </div>
