@@ -180,6 +180,24 @@ export const IMAGES = {
     width: 232,
     height: 200,
   },
+  teamAminata: {
+    src: "/images/aminata.svg",
+    alt: "Aminata Tendonge",
+    width: 232,
+    height: 200,
+  },
+  teamSahar: {
+    src: "/images/sahar.svg",
+    alt: "Sahar Shahverdi",
+    width: 232,
+    height: 200,
+  },
+  teamAlireza: {
+    src: "/images/alireza.svg",
+    alt: "Alireza Taghabon",
+    width: 232,
+    height: 200,
+  },
   teamAckBg: {
     src: "/images/acknowledgement-bg.svg",
     alt: "",

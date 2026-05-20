@@ -44,7 +44,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: "Head of Development",
     image: "teamGbemisola",
   },
-  { id: "aminata", name: "Aminata Tendonge", role: "PM + Research & Design" },
+  {
+    id: "aminata",
+    name: "Aminata Tendonge",
+    role: "PM + Research & Design",
+    image: "teamAminata",
+  },
   {
     id: "qianwen",
     name: "Qianwen Hou",
@@ -55,6 +60,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     id: "sahar",
     name: "Sahar Shahverdi",
     role: "User Research & Presentation",
+    image: "teamSahar",
   },
   {
     id: "anirban",
@@ -68,7 +74,12 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: "Development & Connector",
     image: "teamRyan",
   },
-  { id: "ali", name: "Ali Reza", role: "Presentation" },
+  {
+    id: "ali",
+    name: "Alireza Taghabon",
+    role: "Presentation",
+    image: "teamAlireza",
+  },
 ];
 
 export const INSTITUTIONAL_ACK = {
